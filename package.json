@@ -1,0 +1,22 @@
+{
+  "name": "motion-orthopedic",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "images": "node scripts/prepare-images.mjs",
+    "dev": "node scripts/prepare-images.mjs --preview && vite",
+    "build": "node scripts/prepare-images.mjs && vite build",
+    "build:preview": "node scripts/prepare-images.mjs --preview && vite build --mode preview",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.1",
+    "sharp": "^0.35.5",
+    "vite": "^8.3.2"
+  }
+}
