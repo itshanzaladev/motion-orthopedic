@@ -1,0 +1,246 @@
+/* ==========================================================================
+   Logo, Services dropdown, and service-grid layout (loaded after motion.css)
+   ========================================================================== */
+
+/* ---------- Logo ---------- */
+.logo {
+  display: block;
+  height: 54px;
+  width: auto;
+  transition: height 0.3s var(--ease-out, ease);
+}
+.is-scrolled .site-header .logo {
+  height: 46px;
+}
+.site-nav a {
+  white-space: nowrap;
+}
+/* Narrow desktops: the hero already has the booking button, so the header
+   one is hidden here to keep the navigation on one line. */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .header-cta {
+    display: none;
+  }
+  .site-nav a {
+    padding-inline: 9px;
+  }
+}
+.wordmark:hover .logo {
+  transform: none;
+}
+@media (max-width: 479px) {
+  .logo,
+  .is-scrolled .site-header .logo {
+    height: 36px;
+  }
+}
+@media (max-width: 379px) {
+  .logo,
+  .is-scrolled .site-header .logo {
+    height: 26px;
+  }
+  .header-actions {
+    gap: 6px;
+  }
+}
+.footer-brand .logo {
+  height: 56px;
+}
+
+/* ---------- Services dropdown (desktop) ---------- */
+.nav-caret,
+.flyout-caret {
+  transition: transform 0.25s ease;
+}
+.site-nav .has-dropdown > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (min-width: 1024px) {
+  .site-nav > ul > li {
+    position: relative;
+  }
+  .site-nav .dropdown,
+  .site-nav .flyout {
+    position: absolute;
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    min-width: 270px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    box-shadow: 0 20px 44px -18px rgba(26, 22, 72, 0.3), 0 4px 10px -6px rgba(26, 22, 72, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, transform 0.2s var(--ease-out, ease), visibility 0.2s;
+    z-index: 60;
+  }
+  .site-nav .dropdown {
+    top: calc(100% + 14px);
+    inset-inline-start: -8px;
+    transform: translateY(8px);
+  }
+  /* Invisible bridge so the menu stays open while the pointer moves down. */
+  .site-nav .dropdown::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    inset-inline: 0;
+    height: 18px;
+  }
+  .has-dropdown:hover > .dropdown,
+  .has-dropdown:focus-within > .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .has-dropdown:hover .nav-caret,
+  .has-dropdown:focus-within .nav-caret {
+    transform: rotate(180deg);
+  }
+  /* Escape closes the menu even while it keeps focus. */
+  .has-dropdown.is-closed > .dropdown,
+  .has-dropdown.is-closed .flyout {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .site-nav .dropdown li {
+    position: relative;
+  }
+  .site-nav .dropdown a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 10px 24px;
+    border-radius: 0;
+    color: var(--ink);
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: normal;
+    transition: background-color 0.2s ease, color 0.2s ease, padding 0.2s ease;
+  }
+  /* Keep both panels narrow enough to fit on 1024px screens. */
+  .site-nav .dropdown {
+    width: 330px;
+  }
+  .site-nav .flyout {
+    width: 300px;
+  }
+  /* Narrow desktops: no room for side flyouts (especially right-to-left),
+     so the dropdown lists the groups only; each links to its card. */
+  @media (max-width: 1279px) {
+    .site-nav .flyout,
+    .site-nav .flyout-caret {
+      display: none;
+    }
+  }
+  html[lang='ur'] .site-nav .dropdown a {
+    padding-block: 7px;
+    line-height: 2.4;
+  }
+  .site-nav .dropdown a:hover,
+  .site-nav .dropdown a:focus-visible,
+  .site-nav .has-flyout:hover > a {
+    background: var(--brand-50);
+    color: var(--brand-700);
+    padding-inline-start: 28px;
+  }
+  .site-nav .dropdown a:focus-visible {
+    outline-offset: -3px;
+  }
+  .flyout-caret {
+    transform: rotate(-90deg);
+    color: var(--ink-2);
+  }
+  [dir='rtl'] .flyout-caret {
+    transform: rotate(90deg);
+  }
+  .site-nav .flyout {
+    top: -9px;
+    inset-inline-start: 100%;
+    transform: translateX(8px);
+  }
+  [dir='rtl'] .site-nav .flyout {
+    transform: translateX(-8px);
+  }
+  .has-flyout:hover > .flyout,
+  .has-flyout:focus-within > .flyout {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .site-nav .dropdown-all {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--line);
+  }
+  .site-nav .dropdown-all a {
+    justify-content: flex-start;
+    color: var(--brand-700);
+    font-weight: 600;
+  }
+}
+
+/* ---------- Services in the mobile menu ---------- */
+@media (max-width: 1023px) {
+  .site-nav.is-open {
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+  }
+  .site-nav .dropdown {
+    display: block;
+    list-style: none;
+    margin: 0 0 6px;
+    padding: 0;
+    padding-inline-start: 12px;
+    margin-inline-start: 14px;
+    border-inline-start: 2px solid var(--line);
+  }
+  .site-nav .dropdown a {
+    padding: 8px 12px;
+    font-size: 0.97rem;
+    color: var(--ink-2);
+  }
+  .site-nav .flyout,
+  .flyout-caret,
+  .nav-caret {
+    display: none;
+  }
+}
+
+/* ---------- Location card on very small phones ---------- */
+.location-grid > * {
+  min-width: 0;
+}
+@media (max-width: 379px) {
+  .location-card {
+    padding: 18px;
+  }
+  .contact-list > div {
+    grid-template-columns: minmax(84px, 0.42fr) minmax(0, 1fr);
+    gap: 8px;
+  }
+}
+
+/* ---------- Service grid: six groups + full-width "not sure" banner ---------- */
+@media (min-width: 700px) {
+  .service-card--cta {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    padding: 24px 28px;
+  }
+  .service-card--cta > p {
+    flex: 1 1 320px;
+  }
+  .service-card--cta .btn {
+    align-self: center;
+  }
+}

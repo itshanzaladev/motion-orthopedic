@@ -31,7 +31,7 @@ function useInPageLinks() {
         window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
       } else {
         target.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
-        const heading = target.matches('h2, input, select, textarea') ? target : target.querySelector('h2');
+        const heading = target.matches('h2, input, select, textarea') ? target : target.querySelector('h2, h3');
         heading?.focus({ preventScroll: true });
       }
       history.replaceState(null, '', id === 'top' ? location.pathname : `#${id}`);

@@ -83,6 +83,46 @@ for (const [name, photo] of Object.entries(photos)) {
   generated.photos[name] = sizes;
 }
 
+// Logo: any image in /images with "logo" in its name. The supplied logo is a
+// JPEG on white, so we rebuild it with a transparent background in the logo's
+// own colour (header) and in white (footer), plus a square favicon.
+const logoEntry = [...files.entries()].find(([base]) => base.includes('logo'));
+if (logoEntry) {
+  const [logoBase, logoSrc] = logoEntry;
+  used.add(logoBase);
+  const { data, info } = await sharp(logoSrc).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  const px = info.width * info.height;
+  const lum = (i) => 0.2126 * data[i] + 0.7152 * data[i + 1] + 0.0722 * data[i + 2];
+  // Ink colour = average of the darkest pixels.
+  let sum = [0, 0, 0], n = 0;
+  for (let p = 0; p < px; p++) {
+    const i = p * 3;
+    if (lum(i) < 110) { sum[0] += data[i]; sum[1] += data[i + 1]; sum[2] += data[i + 2]; n++; }
+  }
+  const ink = sum.map((v) => Math.round(v / Math.max(1, n)));
+  const inkLum = 0.2126 * ink[0] + 0.7152 * ink[1] + 0.0722 * ink[2];
+  const build = (rgb) => {
+    const out = Buffer.alloc(px * 4);
+    for (let p = 0; p < px; p++) {
+      const a = Math.max(0, Math.min(255, Math.round(((255 - lum(p * 3)) / (255 - inkLum)) * 255)));
+      out.set([rgb[0], rgb[1], rgb[2], a], p * 4);
+    }
+    return sharp(out, { raw: { width: info.width, height: info.height, channels: 4 } });
+  };
+  const logoWidth = Math.min(720, info.width);
+  const navy = await build(ink).trim().resize({ width: logoWidth }).webp({ quality: 92, alphaQuality: 100 })
+    .toFile(path.join(outDir, 'logo.webp'));
+  await build([255, 255, 255]).trim().resize({ width: logoWidth }).webp({ quality: 92, alphaQuality: 100 })
+    .toFile(path.join(outDir, 'logo-white.webp'));
+  // Favicon: the running figure, centred on a transparent square.
+  const fig = { left: Math.round(info.width * 0.3), top: Math.round(info.height * 0.06), width: Math.round(info.width * 0.2), height: Math.round(info.height * 0.86) };
+  // (sharp trims before extracting, so extract first, then trim separately)
+  const figure = await sharp(await build(ink).extract(fig).png().toBuffer()).trim().png().toBuffer();
+  await sharp(figure).resize(64, 64, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png()
+    .toFile(path.join(outDir, 'favicon.png'));
+  generated.logo = { width: navy.width, height: navy.height, ink: `rgb(${ink.join(',')})` };
+}
+
 const reviewFiles = indexFolder(reviewsDir);
 for (const review of reviews) {
   if (!review.screenshot) continue;

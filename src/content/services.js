@@ -12,6 +12,11 @@ export const serviceGroups = [
     services: ['orthopaedic', 'postOperative', 'sports', 'amputee'],
   },
   {
+    id: 'joints',
+    icon: 'spine',
+    services: ['spineTreatment', 'jointRestoration', 'jointReplacement', 'footCorrection'],
+  },
+  {
     id: 'neuro',
     icon: 'neuro',
     services: ['neuro', 'stroke'],
@@ -24,7 +29,7 @@ export const serviceGroups = [
   {
     id: 'specialist',
     icon: 'spark',
-    services: ['homeSessions', 'dryNeedling', 'kinesiotaping', 'electrotherapy', 'cupping', 'orthotics', 'pelvicFloor'],
+    services: ['homeSessions', 'dryNeedling', 'kinesiotaping', 'electrotherapy', 'cupping', 'orthotics', 'mobilityAids', 'pelvicFloor'],
   },
 ];
 

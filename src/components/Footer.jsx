@@ -1,7 +1,7 @@
 import { business } from '../config/business.js';
 import { useI18n } from '../i18n/I18nProvider.jsx';
 import Icon, { WhatsAppIcon } from './Icon.jsx';
-import { LanguageSwitch } from './Header.jsx';
+import { LanguageSwitch, Logo } from './Header.jsx';
 
 export default function Footer() {
   const { t } = useI18n();
@@ -10,8 +10,8 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-grid">
         <div>
-          <p className="footer-brand" lang="en" dir="ltr">
-            Motion Orthopedic
+          <p className="footer-brand">
+            <Logo variant="white" />
           </p>
           <p>{f.tagline}</p>
           <p>{t.common.doctorName}</p>

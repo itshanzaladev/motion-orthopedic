@@ -4,7 +4,7 @@
    (see the block at the end).
    ========================================================================== */
 :root {
-  --shadow-lg: 0 26px 50px -22px rgba(7, 20, 66, 0.38), 0 6px 14px -6px rgba(7, 20, 66, 0.12);
+  --shadow-lg: 0 26px 50px -22px rgba(26, 22, 72, 0.38), 0 6px 14px -6px rgba(26, 22, 72, 0.12);
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 h1,
@@ -89,11 +89,11 @@ h2 {
 }
 @keyframes pulseRing {
   0% {
-    box-shadow: 0 0 0 0 rgba(36, 67, 168, 0.45);
+    box-shadow: 0 0 0 0 rgba(63, 56, 145, 0.45);
   }
   70%,
   100% {
-    box-shadow: 0 0 0 12px rgba(36, 67, 168, 0);
+    box-shadow: 0 0 0 12px rgba(63, 56, 145, 0);
   }
 }
 @keyframes waPulse {
@@ -126,7 +126,7 @@ h2 {
 }
 .is-scrolled .site-header {
   background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 12px 30px -20px rgba(7, 20, 66, 0.5);
+  box-shadow: 0 12px 30px -20px rgba(26, 22, 72, 0.5);
 }
 .header-inner {
   transition: min-height 0.3s var(--ease-out);
@@ -186,7 +186,7 @@ h2 {
 .blob--2 {
   width: 340px;
   height: 340px;
-  background: #d8f0f8;
+  background: #ebe8fb;
   bottom: -160px;
   inset-inline-start: -120px;
   animation: drift2 22s ease-in-out infinite alternate;
@@ -314,7 +314,7 @@ html[lang='ur'] .hero-chip {
   .btn-primary:hover,
   .btn-whatsapp:hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 26px -12px rgba(22, 48, 138, 0.7);
+    box-shadow: 0 14px 26px -12px rgba(42, 37, 100, 0.7);
   }
   .btn-secondary:hover {
     transform: translateY(-2px);
@@ -456,7 +456,7 @@ html[lang='ur'] .hero-chip {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(2, 15, 61, 0.5), transparent 55%);
+  background: linear-gradient(to top, rgba(21, 18, 59, 0.5), transparent 55%);
   opacity: 0;
   transition: opacity 0.4s ease;
 }

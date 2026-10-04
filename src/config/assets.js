@@ -191,7 +191,7 @@ export const galleryOrder = [
   'neckDeviceTreatment',
   'doctorDesignated',
   'kneelingStretch',
-  'backHeatLamp',
+  'shoulderMassageDevice',
   'treatmentRoomOverview',
   'supportsShelves',
 ];
@@ -201,6 +201,7 @@ export const galleryMax = 6;
 export const servicePhotos = {
   pain: 'shoulderMassageDevice',
   injury: 'legElectrotherapyLamp',
+  joints: 'backHeatLamp',
   neuro: 'parallelBarsStanding',
   ages: 'paediatricToolsTable',
   specialist: 'armElectrotherapyLamp',

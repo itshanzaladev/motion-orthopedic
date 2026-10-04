@@ -4,6 +4,7 @@ import App from './App.jsx';
 import { I18nProvider } from './i18n/I18nProvider.jsx';
 import './styles.css';
 import './motion.css';
+import './header.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -22,7 +22,7 @@ export default function Services() {
         {serviceGroups.map((group) => {
           const photo = getPhoto(servicePhotos[group.id], lang);
           return (
-          <li key={group.id} className="card service-card">
+          <li key={group.id} id={`service-${group.id}`} className="card service-card">
             {photo && (
               <div className="service-media">
                 <Photo photo={photo} sizes="(min-width: 1024px) 360px, (min-width: 700px) 50vw, 100vw" />
@@ -31,7 +31,7 @@ export default function Services() {
             <span className="service-icon">
               <Icon name={group.icon} size={26} />
             </span>
-            <h3>{s.groups[group.id].title}</h3>
+            <h3 tabIndex={-1}>{s.groups[group.id].title}</h3>
             <p>{s.groups[group.id].desc}</p>
             <p className="service-includes">{s.includes}</p>
             <ul className="chip-list">
@@ -65,7 +65,7 @@ export default function Services() {
         <div className="disclosure-body">
           {serviceGroups.map((group) => (
             <div key={group.id} className="service-list-group">
-              <h3>{s.groups[group.id].title}</h3>
+              <h3 tabIndex={-1}>{s.groups[group.id].title}</h3>
               <dl className="service-list">
                 {group.services.map((id) => (
                   <div key={id}>

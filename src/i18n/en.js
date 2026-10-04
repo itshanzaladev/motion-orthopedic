@@ -65,6 +65,10 @@ const en = {
         title: 'Injury and post-operative rehabilitation',
         desc: 'Rehabilitation after orthopaedic problems, sports injuries, surgery or amputation.',
       },
+      joints: {
+        title: 'Joint, spine and foot care',
+        desc: 'Care for back, neck, joint and foot problems, including rehabilitation after joint replacement.',
+      },
       neuro: {
         title: 'Neurological and stroke rehabilitation',
         desc: 'Rehabilitation for people with neurological conditions, including after a stroke.',
@@ -99,6 +103,11 @@ const en = {
       workInjuries: { name: 'Work-related injuries', desc: 'Assessment and rehabilitation for injuries related to work.' },
       posturalAssessment: { name: 'Postural assessment', desc: 'A look at your posture and how it may relate to discomfort.' },
       cupping: { name: 'Dynamic cupping therapy', desc: 'Cupping combined with movement, where suitable.' },
+      spineTreatment: { name: 'Spine treatment', desc: 'Assessment and physiotherapy for back and neck problems.' },
+      jointRestoration: { name: 'Joint restoration', desc: 'Physiotherapy to help restore movement and function in stiff or painful joints.' },
+      jointReplacement: { name: 'Joint replacement rehabilitation', desc: 'Physiotherapy before and after knee or hip replacement surgery.' },
+      footCorrection: { name: 'Foot correction', desc: 'Assessment and support for foot posture and alignment, including insoles where suitable.' },
+      mobilityAids: { name: 'Mobility aids and disability equipment', desc: 'Advice on wheelchairs, walkers and other equipment for daily mobility.' },
     },
   },
   about: {
